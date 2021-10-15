@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Product Query List</title>
+<style type="text/css">
+table {
+	margin: auto;
+	width: 70%
+}
+
+#ptitle {
+	background-color: orange;
+}
+
+#productListTitle {
+	margin: auto;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+}
+</style>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+var indexPage = 1;
+$(document).ready(function(){
+    load(indexPage);
+});
+
+function change(page){
+   indexPage = page;
+  load(indexPage);
+}
+
+function load(indexPage){
+$.ajax({
+   type:'post',
+   url:'/queryallbypage/' + indexPage,
+   dataType:'JSON',
+   contentType:'application/json',
+   success: function(data) {
+     var json = JSON.stringify(data, null, 4);
+     console.log("SUCCESS : ", json);
+     var parsedObjinArray = JSON.parse(json);
+     $('#showQA').empty(""); //清空table內的資料
+       if(json=null){
+         $('table').prepend("<tr><td colspan='2'>暫無資料</td></tr>");
+       }else{
+         var table = $('#showQA');
+         table.append("<tr id='ptitle'><th>ID</th><th>Product Name</th><th>Product Price</th><th>Date</th><th>Note</th></tr>");
+         $.each(parsedObjinArray,function(i,q){
+            var tr = "<tr align='center'>" + "<td>" + q.qaid + "</td>" +
+                     "<td>" + q.qatitle + "</td>" + "<td>" + q.qaanswer + "</td>" +
+                     "<td>" + q.qatime + "</td>" + "</tr>";
+           table.append(tr);
+       });
+    }
+},
+error: function() {
+    console.log("error");
+}
+});
+}
+</script>
+</head>
+<body>
+	<div id="productListTitle">ProductQuery</div>
+	<table id="showQA" border="1">
+	</table>
+	<table id="showpage">
+		<tr>
+			<td>Total Pages:${totalPages} Total Records:${totalElements}</td>
+			<td colspan="3" align="right">Previous <c:forEach var="i"
+					begin="1" end="${totalPages}" step="1">
+					<button id="myPage" value="${i}" onclick="change(${i})">${i}</button>
+				</c:forEach>Next
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;500;700&family=Open+Sans:wght@700&display=swap');
+
+html,
+body {
+  height: 100%;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+  /* font-family: 'Noto Sans TC', sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
+font-family: 'Open Sans', sans-serif; */
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-image: url("/images/loginnew4.jpg");
+  /* background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),url("/images/loginnew4.jpg"); */
+  opacity: 0.97;
+}
+
+
+.form-signin {
+  width: 100%;
+  max-width: 440px;
+  padding: 15px;
+  margin: auto;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.googlestyle{
+  background-color: slategray;
+  border: 0px;
+}
+.googlestyle:hover{
+  background-color: slategray;
+  opacity: 0.5;
+}
+
+.normalstyle{
+  background-color: #e2c395;
+  border: 0px;
+  font-size: 20px;
+}
+.normalstyle:hover{
+  background-color: #e2c395;
+  opacity: 0.5;
+}
+
+.buttoncolor1{
+  background-color: #af5e24;
+  border: 0px;
+}
+
+.buttoncolor1:hover{
+  background-color: #af5e24;
+  opacity: 0.5;
+}
+
